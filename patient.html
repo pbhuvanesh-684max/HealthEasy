@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HEALTH EASY Care - Patient Portal</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Bar Navigation -->
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">💛</div>
+        <span>HEALTH EASY</span>
+      </a>
+
+      <!-- Header Controls: Direct Select Dropdown & 3-Bar (Hamburger) Menu Button -->
+      <div class="header-controls">
+                <!-- Right Top Corner Small Circle Profile Alone -->
+        <button class="patient-circle-profile-btn" id="patientCircleProfileBtn" onclick="openPatientVitalsDashboard()" title="Patient Profile & Vitals Dashboard (Karthik Subramanian)" aria-label="Patient Profile">
+          <span class="patient-circle-avatar-icon">👤</span>
+          <span class="patient-circle-live-dot"></span>
+        </button>
+
+        <div class="domain-select-wrapper">
+          <select id="headerDomainSelect" class="domain-select-dropdown" aria-label="Select Domain">
+            <option value="" disabled>⚡ Jump to Domain...</option>
+            <option value="index.html">🏠 Home Page</option>
+            <option value="ai-assist.html">🤖 AI Assist (Smart Care Companion)</option>
+            <option value="user-coe.html">🏢 User COE (Admin Sharan)</option>
+            <option value="patient-coe.html">🏥 Patient COE (Live Queue)</option>
+            <option value="scan-reports.html">🔬 Scan Reports (Diagnostics)</option>
+            <option value="patient.html" selected>📱 Patient Portal (Booking)</option>
+            <option value="doctor.html">👨‍⚕️ Doctor Directory (Staff)</option>
+            <option value="doctor-report.html">📋 Doctor Report (Dr. Bhuvanesh)</option>
+            <option value="patient-report.html">📑 Patient Entire Report</option>
+            <option value="analyzer.html">📊 Friendly Analyzer</option>
+            <option value="contact.html">📞 Contact Hotline (+91 8072246835)</option>
+            <option value="about.html">ℹ️ About Us</option>
+          </select>
+        </div>
+
+        <!-- 3-Bar (Hamburger) Domain Button -->
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open Domain Menu">
+          <span class="three-bars-icon">☰</span>
+          <span class="three-bars-label">Select Option</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Domain Drawer (Good Format Categorized 3D Menu) -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="domain-drawer" id="domainDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <span class="three-bars-icon">☰</span>
+        <span>Select Option</span>
+      </div>
+      <button class="close-drawer-btn" id="closeDrawerBtn" aria-label="Close menu">&times;</button>
+    </div>
+
+    <!-- Quick Select Dropdown inside Three-Bar Menu -->
+    <div class="drawer-quick-select">
+      <label for="drawerDomainSelect" class="drawer-select-label">Quick Jump to Domain:</label>
+      <select id="drawerDomainSelect" class="domain-select-dropdown">
+        <option value="" disabled>Choose a Domain...</option>
+        <option value="index.html">🏠 Home Page</option>
+            <option value="ai-assist.html">🤖 AI Assist (Smart Care Companion)</option>
+        <option value="user-coe.html">🏢 User COE (Admin Sharan)</option>
+        <option value="patient-coe.html">🏥 Patient COE (Live Queue)</option>
+        <option value="scan-reports.html">🔬 Scan Reports (Diagnostics)</option>
+        <option value="patient.html" selected>📱 Patient Portal</option>
+        <option value="doctor.html">👨‍⚕️ Doctor Directory</option>
+        <option value="doctor-report.html">📋 Doctor Report</option>
+        <option value="patient-report.html">📑 Patient Entire Report</option>
+        <option value="analyzer.html">📊 Friendly Analyzer</option>
+        <option value="contact.html">📞 Contact & Hotline</option>
+        <option value="about.html">ℹ️ About Us</option>
+      </select>
+    </div>
+
+    <!-- Categorized Domain Groups in Good Format -->
+    <div class="drawer-categories">
+      <!-- Category 1: AI & Smart Companion -->
+      <div class="drawer-category">
+        <div class="drawer-cat-title">🤖 AI Assistant & Smart Care</div>
+        <ul class="drawer-domains-list">
+          <li class="drawer-item">
+            <a href="ai-assist.html">
+              <span class="item-icon">🤖</span>
+              <div class="item-content">
+                <span class="item-name">AI Assist</span>
+                <span class="item-desc">Problem-Solving Chatbot & Timed Reminders (7-10am, 12-3pm, 6-8pm)</span>
+              </div>
+              <span class="domain-badge badge-live">AI Bot</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Category 1: Hospital COE Diagnostics -->
+      <div class="drawer-category">
+        <div class="drawer-cat-title">🏢 Hospital Center of Excellence (COE)</div>
+        <ul class="drawer-domains-list">
+          <li class="drawer-item">
+            <a href="user-coe.html">
+              <span class="item-icon">🏢</span>
+              <div class="item-content">
+                <span class="item-name">User COE</span>
+                <span class="item-desc">Admin Sharan Portal & 15m Scan Timer</span>
+              </div>
+              <span class="domain-badge badge-admin">Admin Sharan</span>
+            </a>
+          </li>
+          <li class="drawer-item">
+            <a href="patient-coe.html">
+              <span class="item-icon">🏥</span>
+              <div class="item-content">
+                <span class="item-name">Patient COE</span>
+                <span class="item-desc">Live Queue, Slot Arrival & Delay Alert</span>
+              </div>
+              <span class="domain-badge badge-live">Live Queue</span>
+            </a>
+          </li>
+          <li class="drawer-item">
+            <a href="scan-reports.html">
+              <span class="item-icon">🔬</span>
+              <div class="item-content">
+                <span class="item-name">Scan Reports</span>
+                <span class="item-desc">CT Scan, X-Ray, Ultrasound & MRI</span>
+              </div>
+              <span class="domain-badge">Diagnostics</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Category 2: Doctor & Clinical Care -->
+      <div class="drawer-category">
+        <div class="drawer-cat-title">👨‍⚕️ Clinical & Doctor Care</div>
+        <ul class="drawer-domains-list">
+          <li class="drawer-item">
+            <a href="doctor-report.html">
+              <span class="item-icon">📋</span>
+              <div class="item-content">
+                <span class="item-name">Doctor Report</span>
+                <span class="item-desc">Dr. Bhuvanesh Login & 10m Timer</span>
+              </div>
+              <span class="domain-badge badge-doc">Dr. Bhuvanesh</span>
+            </a>
+          </li>
+          <li class="drawer-item">
+            <a href="doctor.html">
+              <span class="item-icon">👨‍⚕️</span>
+              <div class="item-content">
+                <span class="item-name">Doctor Directory</span>
+                <span class="item-desc">3D Animated Medical Specialists</span>
+              </div>
+              <span class="domain-badge">Staff</span>
+            </a>
+          </li>
+          <li class="drawer-item">
+            <a href="patient.html" class="active">
+              <span class="item-icon">📱</span>
+              <div class="item-content">
+                <span class="item-name">Patient Portal</span>
+                <span class="item-desc">Auto WhatsApp Booking (+91 8072246835)</span>
+              </div>
+              <span class="domain-badge badge-whatsapp">WhatsApp</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Category 3: Analytics & Records -->
+      <div class="drawer-category">
+        <div class="drawer-cat-title">📊 Analytics & Health Records</div>
+        <ul class="drawer-domains-list">
+          <li class="drawer-item">
+            <a href="patient-report.html">
+              <span class="item-icon">📑</span>
+              <div class="item-content">
+                <span class="item-name">Patient Entire Report</span>
+                <span class="item-desc">Comprehensive Individual Health Records</span>
+              </div>
+              <span class="domain-badge">Records</span>
+            </a>
+          </li>
+          <li class="drawer-item">
+            <a href="analyzer.html">
+              <span class="item-icon">📊</span>
+              <div class="item-content">
+                <span class="item-name">Friendly Analyzer</span>
+                <span class="item-desc">Interactive Patient Health Analytics</span>
+              </div>
+              <span class="domain-badge">Analyzer</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Category 4: Overview & Support -->
+      <div class="drawer-category">
+        <div class="drawer-cat-title">ℹ️ Overview & Emergency Support</div>
+        <ul class="drawer-domains-list">
+          <li class="drawer-item">
+            <a href="index.html">
+              <span class="item-icon">🏠</span>
+              <div class="item-content">
+                <span class="item-name">Home Page</span>
+                <span class="item-desc">3D Hospital Showcase, Waves & Lifeline</span>
+              </div>
+              <span class="domain-badge">Main</span>
+            </a>
+          </li>
+          <li class="drawer-item">
+            <a href="contact.html">
+              <span class="item-icon">📞</span>
+              <div class="item-content">
+                <span class="item-name">Emergency Contact</span>
+                <span class="item-desc">24/7 Hotline: +91 8072246835</span>
+              </div>
+              <span class="domain-badge badge-hotline">Hotline</span>
+            </a>
+          </li>
+          <li class="drawer-item">
+            <a href="about.html">
+              <span class="item-icon">ℹ️</span>
+              <div class="item-content">
+                <span class="item-name">About Us</span>
+                <span class="item-desc">Hospital Philosophy & Technology</span>
+              </div>
+              <span class="domain-badge">Info</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main>
+    <div style="margin-bottom: 2rem;">
+      <span class="badge badge-yellow">Official Sender: +91 8072246835</span>
+      <h1 style="font-size: 2.2rem; color: var(--primary-hover); margin-top: 0.4rem;">Patient Appointment & WhatsApp Portal</h1>
+      <p style="color: var(--text-muted);">All appointment confirmation messages are dispatched directly from our official WhatsApp hotline <strong>+91 8072246835</strong> to your mobile number.</p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom: 2.5rem;">
+      <!-- Single Clean Appointment Form with action="javascript:void(0);" -->
+      <div class="card">
+        <h2 style="font-size: 1.4rem; color: var(--primary-hover); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+          <span>📅</span> Book Appointment & Send WhatsApp
+        </h2>
+        
+        <!-- Sender Banner -->
+        <div style="background-color: #DCF8C6; border: 1px solid #25D366; border-radius: var(--radius-sm); padding: 0.75rem 1rem; margin-bottom: 1.2rem; font-size: 0.9rem; color: #075E54; display: flex; align-items: center; gap: 0.6rem;">
+          <span style="font-size: 1.2rem;">📱</span>
+          <div>
+            <strong>Official Dispatcher:</strong> HEALTH EASY Care (<strong style="color: #128C7E;">+91 8072246835</strong>)
+          </div>
+        </div>
+
+        <form id="appointmentForm" action="javascript:void(0);" onsubmit="return false;" class="js-appointment-form">
+          
+          <!-- Patient Name -->
+          <div class="form-group">
+            <label class="form-label" for="patientName">Patient Full Name</label>
+            <input type="text" id="patientName" class="form-control" placeholder="e.g. Rajesh Kumar" required>
+          </div>
+
+          <!-- Country Code + WhatsApp Mobile Number -->
+          <div class="form-group">
+            <label class="form-label" for="patientPhone">Patient Mobile Number</label>
+            <div style="display: flex; gap: 0.5rem;">
+              <select id="countryCode" class="form-control" style="width: 120px; font-weight: 700; color: #075E54; background-color: #DCF8C6; border-color: #25D366;">
+                <option value="91" selected>🇮🇳 +91 (India)</option>
+                <option value="1">🇺🇸 +1 (US)</option>
+                <option value="44">🇬🇧 +44 (UK)</option>
+                <option value="971">🇦🇪 +971 (UAE)</option>
+              </select>
+              <input type="tel" id="patientPhone" class="form-control" placeholder="10-digit mobile number" maxlength="10" required>
+            </div>
+            <small style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.25rem; display: block;">Select +91 and enter your 10-digit number. Message will be sent from +91 8072246835.</small>
+          </div>
+
+          <!-- Doctor Selection & Specialty -->
+          <div class="form-group">
+            <label class="form-label" for="doctorSelect">Select Doctor & Specialty</label>
+            <select id="doctorSelect" class="form-control" required>
+              <option value="">-- Choose Doctor & Specialty --</option>
+              <option value="Dr. Arthur Vance|Cardiology|Mon - Thu (09:00 AM - 04:00 PM)">Dr. Arthur Vance — Cardiology (Available Mon-Thu)</option>
+              <option value="Dr. Sophia Chen|Pediatrics|Tue - Sat (10:00 AM - 05:00 PM)">Dr. Sophia Chen — Pediatrics (Available Tue-Sat)</option>
+              <option value="Dr. Robert Sterling|Neurology|Mon, Wed, Fri (08:30 AM - 03:00 PM)">Dr. Robert Sterling — Neurology (Available Mon,Wed,Fri)</option>
+              <option value="Dr. Elena Rostova|Orthopedics|Mon - Sat (09:00 AM - 05:00 PM)">Dr. Elena Rostova — Orthopedics (Available Mon-Sat)</option>
+            </select>
+          </div>
+
+          <!-- Appointment Date & Slot -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="patientDate">Appointment Date</label>
+              <input type="date" id="patientDate" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="patientTime">Time Slot</label>
+              <select id="patientTime" class="form-control" required>
+                <option value="09:00 AM">09:00 AM</option>
+                <option value="11:30 AM">11:30 AM</option>
+                <option value="02:00 PM">02:00 PM</option>
+                <option value="04:30 PM">04:30 PM</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- SINGLE CONFIRMATION BUTTON ONLY (Triggers silent background JS only) -->
+          <button type="button" id="confirmBtn" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 0.8rem; background-color: #25D366; border-color: #128C7E; font-size: 1.1rem; padding: 0.85rem;">
+            Confirm Appointment
+          </button>
+        </form>
+      </div>
+
+      <!-- Live Dashboard & Instant Direct Confirmation Card -->
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        
+        <!-- Confirmation Banner Card -->
+        <div id="whatsappConfirmationCard" class="card" style="background-color: #DCF8C6; border: 2px solid #25D366; display: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 700; color: #075E54; font-size: 1.1rem;">
+              <span>✅</span> Appointment Confirmed
+            </div>
+            <span class="badge" style="background-color: #25D366; color: white;">Transmitted from +91 8072246835</span>
+          </div>
+          
+          <div style="background: white; border: 1.5px solid #25D366; border-radius: var(--radius-sm); padding: 1.2rem;">
+            <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.6rem; display: flex; justify-content: space-between;">
+              <span>From: <strong style="color: #075E54;">+91 8072246835</strong> ➔ To: <strong id="waTargetPhone" style="color: #075E54; font-size: 1rem;">+91 9876543210</strong></span>
+              <span style="color:#25D366; font-weight:bold;">✓✓ Delivered</span>
+            </div>
+            
+            <pre id="waMessageBody" style="font-family: inherit; font-size: 0.95rem; color: var(--text-dark); line-height: 1.6; font-weight: 500; white-space: pre-wrap; background: #FAF8F5; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-yellow); margin: 0;"></pre>
+          </div>
+        </div>
+
+        <div class="card" style="background-color: var(--bg-secondary);">
+          <h3 style="font-size: 1.2rem; color: var(--primary-hover); margin-bottom: 0.6rem;">📱 Sender Hotline: +91 8072246835</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Clicking <strong>Confirm Appointment</strong> dispatches your details directly from our WhatsApp server (+91 8072246835) to your mobile number with zero browser permission prompts.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <div class="brand" style="margin-bottom: 0.8rem;">
+          <div class="brand-icon">💛</div>
+          <span>HEALTH EASY</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Official WhatsApp Hotline: +91 8072246835</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Domains</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home Page</a></li>
+          <li><a href="ai-assist.html">AI Assist</a></li>
+          <li><a href="patient.html">Patient Portal</a></li>
+          <li><a href="doctor.html">Doctor Directory</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>WhatsApp Hotline</h4>
+        <p style="font-size: 1.3rem; font-weight: 800; color: var(--primary-hover); margin-bottom: 0.4rem;">+91 8072246835</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 HEALTH EASY Healthcare Portal.
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

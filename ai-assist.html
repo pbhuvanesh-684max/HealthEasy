@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HEALTH EASY - AI Assist Companion</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Bar Navigation -->
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">💛</div>
+        <span>HEALTH EASY</span>
+      </a>
+
+      <!-- Header Controls -->
+      <div class="header-controls">
+                <!-- Right Top Corner Small Circle Profile Alone -->
+        <button class="patient-circle-profile-btn" id="patientCircleProfileBtn" onclick="openPatientVitalsDashboard()" title="Patient Profile & Vitals Dashboard (Karthik Subramanian)" aria-label="Patient Profile">
+          <span class="patient-circle-avatar-icon">👤</span>
+          <span class="patient-circle-live-dot"></span>
+        </button>
+
+        <div class="domain-select-wrapper">
+          <select id="headerDomainSelect" class="domain-select-dropdown" aria-label="Select Domain">
+            <option value="" disabled>⚡ Jump to Domain...</option>
+            <option value="index.html">🏠 Home Page</option>
+            <option value="ai-assist.html" selected>🤖 AI Assist (Smart Care Companion)</option>
+            <option value="user-coe.html">🏢 User COE (Admin Sharan)</option>
+            <option value="patient-coe.html">🏥 Patient COE (Live Queue)</option>
+            <option value="scan-reports.html">🔬 Scan Reports (Diagnostics)</option>
+            <option value="patient.html">📱 Patient Portal (Booking)</option>
+            <option value="doctor.html">👨‍⚕️ Doctor Directory (Staff)</option>
+            <option value="doctor-report.html">📋 Doctor Report (Dr. Bhuvanesh)</option>
+            <option value="patient-report.html">📑 Patient Entire Report</option>
+            <option value="analyzer.html">📊 Friendly Analyzer</option>
+            <option value="contact.html">📞 Contact Hotline (+91 8072246835)</option>
+            <option value="about.html">ℹ️ About Us</option>
+          </select>
+        </div>
+
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open Domain Menu">
+          <span class="three-bars-icon">☰</span>
+          <span class="three-bars-label">Select Option</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Domain Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="domain-drawer" id="domainDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <span class="three-bars-icon">☰</span>
+        <span>Select Option</span>
+      </div>
+      <button class="close-drawer-btn" id="closeDrawerBtn" aria-label="Close menu">&times;</button>
+    </div>
+
+    <div class="drawer-quick-select">
+      <label for="drawerDomainSelect" class="drawer-select-label">Quick Jump to Domain:</label>
+      <select id="drawerDomainSelect" class="domain-select-dropdown">
+        <option value="" disabled>Choose a Domain...</option>
+        <option value="index.html">🏠 Home Page</option>
+        <option value="ai-assist.html" selected>🤖 AI Assist (Care Companion)</option>
+        <option value="user-coe.html">🏢 User COE (Admin Sharan)</option>
+        <option value="patient-coe.html">🏥 Patient COE (Live Queue)</option>
+        <option value="scan-reports.html">🔬 Scan Reports (Diagnostics)</option>
+        <option value="patient.html">📱 Patient Portal</option>
+        <option value="doctor.html">👨‍⚕️ Doctor Directory</option>
+        <option value="doctor-report.html">📋 Doctor Report</option>
+        <option value="patient-report.html">📑 Patient Entire Report</option>
+        <option value="analyzer.html">📊 Friendly Analyzer</option>
+        <option value="contact.html">📞 Contact & Hotline</option>
+        <option value="about.html">ℹ️ About Us</option>
+      </select>
+    </div>
+
+    <div class="drawer-categories">
+      <!-- Category 1: AI & Smart Companion -->
+      <div class="drawer-category">
+        <div class="drawer-cat-title">🤖 AI Assistant & Smart Care</div>
+        <ul class="drawer-domains-list">
+          <li class="drawer-item">
+            <a href="ai-assist.html" class="active">
+              <span class="item-icon">🤖</span>
+              <div class="item-content">
+                <span class="item-name">AI Assist</span>
+                <span class="item-desc">Problem-Solving Chatbot & Timed Reminders (7-10am, 12-3pm, 6-8pm)</span>
+              </div>
+              <span class="domain-badge badge-live">AI Bot</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Category 2: Hospital COE Diagnostics -->
+      <div class="drawer-category">
+        <div class="drawer-cat-title">🏢 Hospital Center of Excellence (COE)</div>
+        <ul class="drawer-domains-list">
+          <li class="drawer-item">
+            <a href="user-coe.html">
+              <span class="item-icon">🏢</span>
+              <div class="item-content">
+                <span class="item-name">User COE</span>
+                <span class="item-desc">Admin Sharan Portal & 15m Scan Timer</span>
+              </div>
+              <span class="domain-badge badge-admin">Admin Sharan</span>
+            </a>
+          </li>
+          <li class="drawer-item">
+            <a href="patient-coe.html">
+              <span class="item-icon">🏥</span>
+              <div class="item-content">
+                <span class="item-name">Patient COE</span>
+                <span class="item-desc">Live Queue, Slot Arrival & Delay Alert</span>
+              </div>
+              <span class="domain-badge badge-live">Live Queue</span>
+            </a>
+          </li>
+          <li class="drawer-item">
+            <a href="scan-reports.html">
+              <span class="item-icon">🔬</span>
+              <div class="item-content">
+                <span class="item-name">Scan Reports</span>
+                <span class="item-desc">CT Scan, X-Ray, Ultrasound & MRI</span>
+              </div>
+              <span class="domain-badge">Diagnostics</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Category 3: Clinical Care -->
+      <div class="drawer-category">
+        <div class="drawer-cat-title">👨‍⚕️ Clinical & Doctor Care</div>
+        <ul class="drawer-domains-list">
+          <li class="drawer-item">
+            <a href="doctor.html">
+              <span class="item-icon">👨‍⚕️</span>
+              <div class="item-content">
+                <span class="item-name">Doctor Directory</span>
+                <span class="item-desc">Browse Specialist Doctors & Book Visits</span>
+              </div>
+              <span class="domain-badge">Directory</span>
+            </a>
+          </li>
+          <li class="drawer-item">
+            <a href="doctor-report.html">
+              <span class="item-icon">📋</span>
+              <div class="item-content">
+                <span class="item-name">Doctor Report</span>
+                <span class="item-desc">Clinical Entry (Dr. Bhuvanesh / 1234)</span>
+              </div>
+              <span class="domain-badge">Portal</span>
+            </a>
+          </li>
+          <li class="drawer-item">
+            <a href="patient-report.html">
+              <span class="item-icon">📑</span>
+              <div class="item-content">
+                <span class="item-name">Patient Entire Report</span>
+                <span class="item-desc">Download PDF & View Diagnostics</span>
+              </div>
+              <span class="domain-badge">Records</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Category 4: Patient Management & Support -->
+      <div class="drawer-category">
+        <div class="drawer-cat-title">📱 Patient Management & Analytics</div>
+        <ul class="drawer-domains-list">
+          <li class="drawer-item">
+            <a href="patient.html">
+              <span class="item-icon">📱</span>
+              <div class="item-content">
+                <span class="item-name">Patient Portal</span>
+                <span class="item-desc">Online Registration & Fast Booking</span>
+              </div>
+              <span class="domain-badge">Booking</span>
+            </a>
+          </li>
+          <li class="drawer-item">
+            <a href="analyzer.html">
+              <span class="item-icon">📊</span>
+              <div class="item-content">
+                <span class="item-name">Friendly Analyzer</span>
+                <span class="item-desc">Interactive Patient Health Analytics</span>
+              </div>
+              <span class="domain-badge">Analyzer</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Category 5: Overview & Support -->
+      <div class="drawer-category">
+        <div class="drawer-cat-title">ℹ️ Overview & Emergency Support</div>
+        <ul class="drawer-domains-list">
+          <li class="drawer-item">
+            <a href="index.html">
+              <span class="item-icon">🏠</span>
+              <div class="item-content">
+                <span class="item-name">Home Page</span>
+                <span class="item-desc">3D Hospital Showcase, Waves & Lifeline</span>
+              </div>
+              <span class="domain-badge">Main</span>
+            </a>
+          </li>
+          <li class="drawer-item">
+            <a href="contact.html">
+              <span class="item-icon">📞</span>
+              <div class="item-content">
+                <span class="item-name">Emergency Contact</span>
+                <span class="item-desc">24/7 Hotline: +91 8072246835</span>
+              </div>
+              <span class="domain-badge badge-hotline">Hotline</span>
+            </a>
+          </li>
+          <li class="drawer-item">
+            <a href="about.html">
+              <span class="item-icon">ℹ️</span>
+              <div class="item-content">
+                <span class="item-name">About Us</span>
+                <span class="item-desc">Hospital Philosophy & Technology</span>
+              </div>
+              <span class="domain-badge">Info</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Title -->
+    <div style="margin-bottom: 2rem;">
+      <span class="badge badge-yellow">🤖 Intelligent Healthcare Companion</span>
+      <h1 style="font-size: 2.3rem; color: var(--primary-hover); margin-top: 0.4rem;">HEALTH EASY - AI Assist</h1>
+      <p style="color: var(--text-muted); max-width: 860px;">Your friendly 24/7 AI health assistant that solves your medical doubts, answers questions, and monitors your meal & medication schedule. Automatically alerts you every 30-45 minutes during morning (7-10 AM), afternoon (12-3 PM), and dinner (6-8 PM) windows tailored to your medical condition.</p>
+    </div>
+
+    <!-- Active Schedule & Patient Condition Profile Strip -->
+    <div class="ai-profile-strip card">
+      <div class="ai-profile-grid">
+        <!-- Patient Problem Selector -->
+        <div>
+          <label class="form-label" for="patientProblemSelect" style="font-weight: 700; color: var(--text-dark);">
+            🩺 Your Current Health Issue / Condition:
+          </label>
+          <select id="patientProblemSelect" class="form-control" style="font-weight: 600;">
+            <option value="Gastrology & Acid Reflux" selected>🫁 Gastrology & Acid Reflux (Ulcer, Indigestion)</option>
+            <option value="Diabetes & Blood Pressure">🩸 Diabetes & Hypertension (Sugar, BP Check)</option>
+            <option value="Post-Scan Recovery (CT/MRI/X-Ray)">🧠 Post-Scan Recovery (CT Scan, MRI, Ultrasound)</option>
+            <option value="Fever, Cold & Body Infection">🌡️ Fever, Cold, Throat Infection & Body Pain</option>
+            <option value="General Wellness & Medication Follow-up">💊 General Wellness & Routine Medication</option>
+          </select>
+        </div>
+
+        <!-- Real Time & Active Schedule Window -->
+        <div class="ai-schedule-status-box">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+            <span style="font-size: 0.82rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">🕒 System Live Clock:</span>
+            <span id="aiLiveClock" style="font-weight: 800; color: var(--primary-hover); font-size: 1.1rem;">--:--:--</span>
+          </div>
+          <div id="aiScheduleWindowBadge" class="ai-window-badge">
+            <span class="pulse-dot"></span>
+            <span id="aiWindowStatusText">Checking Schedule Window...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Fast-Test Schedule Simulator (Allows immediate testing of all windows) -->
+      <div class="ai-sim-bar">
+        <span style="font-size: 0.85rem; font-weight: 800; color: var(--text-dark); display: flex; align-items: center; gap: 0.3rem;">
+          ⚡ Fast Test Slot Simulator:
+        </span>
+        <div class="ai-sim-buttons">
+          <button class="btn btn-outline ai-sim-btn" data-time="07:30" data-slot="morning">
+            🌅 7:30 AM (Breakfast & Tablet)
+          </button>
+          <button class="btn btn-outline ai-sim-btn" data-time="08:30" data-slot="morning">
+            💊 8:30 AM (Tablet Follow-up)
+          </button>
+          <button class="btn btn-outline ai-sim-btn" data-time="12:45" data-slot="afternoon">
+            ☀️ 12:45 PM (Afternoon Meal)
+          </button>
+          <button class="btn btn-outline ai-sim-btn" data-time="14:15" data-slot="afternoon">
+            🥗 2:15 PM (Midday Rest & Water)
+          </button>
+          <button class="btn btn-outline ai-sim-btn" data-time="19:00" data-slot="evening">
+            🌙 7:00 PM (Dinner Alert)
+          </button>
+          <button class="btn btn-outline ai-sim-btn" data-time="19:45" data-slot="evening-delayed">
+            ⏰ 7:45 PM (Delayed Dinner Advice)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Chatbot Main Layout -->
+    <div class="ai-chat-layout grid-2" style="grid-template-columns: 1fr 340px; margin-top: 1.5rem; gap: 1.5rem;">
+      
+      <!-- Chat Interface Card -->
+      <div class="card ai-chat-card">
+        <!-- Chat Header -->
+        <div class="ai-chat-header">
+          <div class="ai-chat-avatar-wrap">
+            <div class="ai-avatar-icon">🤖</div>
+            <div>
+              <h3 style="margin: 0; font-size: 1.15rem; color: var(--text-dark); display: flex; align-items: center; gap: 0.4rem;">
+                HEALTH EASY Care Assistant
+                <span class="badge badge-success" style="font-size: 0.7rem; padding: 0.15rem 0.5rem;">Online 24/7</span>
+              </h3>
+              <p style="margin: 0; font-size: 0.82rem; color: var(--text-muted);">Empathetic clinical companion for medicine, meal & health queries</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <button id="aiSoundToggle" class="btn btn-outline btn-sm" title="Toggle Voice/Sound">🔊 Voice ON</button>
+            <button id="aiClearChatBtn" class="btn btn-outline btn-sm" title="Clear Conversation">🧹 Clear</button>
+          </div>
+        </div>
+
+        <!-- Chat Conversation Messages Container -->
+        <div id="aiChatMessages" class="ai-chat-messages-container">
+          <!-- Welcome message rendered via JS -->
+        </div>
+
+        <!-- Quick Question Chips -->
+        <div class="ai-quick-chips">
+          <span class="chips-title">💡 Quick Ask:</span>
+          <button class="ai-chip-btn" data-msg="What tablets should I take with breakfast vs dinner?">💊 Tablet Schedule</button>
+          <button class="ai-chip-btn" data-msg="I delayed my dinner by 1 hour, what should I do now?">⏰ Delayed Dinner Help</button>
+          <button class="ai-chip-btn" data-msg="What food should I eat after my CT Scan / Ultrasound?">🥗 Post-Scan Diet</button>
+          <button class="ai-chip-btn" data-msg="I have gastric burning sensation, should I take water or tablets?">🫁 Gastric Burning Relief</button>
+          <button class="ai-chip-btn" data-msg="How much water should I drink with each medication?">💧 Water & Hydration</button>
+        </div>
+
+        <!-- Input Box & Action Bar -->
+        <form id="aiChatForm" class="ai-chat-input-bar">
+          <input 
+            type="text" 
+            id="aiUserInput" 
+            class="form-control ai-text-input" 
+            placeholder="Type your medical query or symptoms here (e.g., 'I have nausea after lunch')..." 
+            required 
+            autocomplete="off"
+          />
+          <button type="submit" id="aiSendBtn" class="btn btn-primary ai-send-btn">
+            <span>Send</span> ➔
+          </button>
+        </form>
+      </div>
+
+      <!-- Schedule Timetable & Friendly Health Protocol Panel -->
+      <div class="card ai-sidebar-card">
+        <h3 style="font-size: 1.15rem; color: var(--primary-hover); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.4rem;">
+          <span>📋</span> AI Care Protocol
+        </h3>
+
+        <!-- Morning Slot Card -->
+        <div class="ai-slot-card morning-slot">
+          <div class="slot-header">
+            <span class="slot-icon">🌅</span>
+            <div>
+              <strong>Morning Window: 7:00 AM – 10:00 AM</strong>
+              <div class="slot-freq">Every 30 mins automatic chatbot reminder</div>
+            </div>
+          </div>
+          <p class="slot-desc">
+            Sends personalized prompts: <em>"You should eat the breakfast,"</em> followed by <em>"You should take tablets with warm water."</em>
+          </p>
+        </div>
+
+        <!-- Afternoon Slot Card -->
+        <div class="ai-slot-card afternoon-slot" style="margin-top: 1rem;">
+          <div class="slot-header">
+            <span class="slot-icon">☀️</span>
+            <div>
+              <strong>Afternoon Window: 12:00 PM – 3:00 PM</strong>
+              <div class="slot-freq">Every 30 to 45 mins automated reminder</div>
+            </div>
+          </div>
+          <p class="slot-desc">
+            Midday nutrition & metabolic support: <em>"You should take the meal / lunch on time,"</em> and afternoon tablet compliance.
+          </p>
+        </div>
+
+        <!-- Evening Slot Card -->
+        <div class="ai-slot-card evening-slot" style="margin-top: 1rem;">
+          <div class="slot-header">
+            <span class="slot-icon">🌙</span>
+            <div>
+              <strong>Evening Window: 6:00 PM – 8:00 PM</strong>
+              <div class="slot-freq">Every 30 mins dinner & delay advisory</div>
+            </div>
+          </div>
+          <p class="slot-desc">
+            Dinner guidance: <em>"You should take the dinner. If you delay, you should take the tablets according to your problem or drink adequate water to avoid stomach irritation."</em>
+          </p>
+        </div>
+
+        <!-- Emergency Hotline Box -->
+        <div style="margin-top: 1.5rem; padding: 1rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1.5px solid var(--border-yellow); text-align: center;">
+          <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Need Urgent Doctor Advice?</div>
+          <div style="font-size: 1.25rem; font-weight: 800; color: var(--primary-hover); margin: 0.3rem 0;">+91 8072246835</div>
+          <a href="tel:+918072246835" class="btn btn-primary btn-sm" style="width: 100%; justify-content: center;">📞 Call 24/7 Hotline</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <div class="brand" style="margin-bottom: 0.8rem;">
+          <div class="brand-icon">💛</div>
+          <span>HEALTH EASY</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Smart AI Health Assistant & Timed Care Companion.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Domains</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home Page</a></li>
+          <li><a href="ai-assist.html">AI Assist</a></li>
+          <li><a href="user-coe.html">User COE Admin (Sharan)</a></li>
+          <li><a href="patient-coe.html">Patient COE Live Queue</a></li>
+          <li><a href="scan-reports.html">Scan Reports</a></li>
+          <li><a href="doctor-report.html">Doctor Report</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>WhatsApp Hotline</h4>
+        <p style="font-size: 1.3rem; font-weight: 800; color: var(--primary-hover); margin-bottom: 0.4rem;">+91 8072246835</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 HEALTH EASY Healthcare Portal.
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
